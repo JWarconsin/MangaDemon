@@ -1,0 +1,55 @@
+/* Styles CSS */
+.Header{
+    background-color: orange;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 200px;
+}
+
+nav{
+  height: 200px;
+}
+
+.crumbs {
+
+    width: 100%;
+    padding: 10px 20px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center; 
+    max-width: 1800px;
+    margin: auto;
+  }
+  
+  .logo {
+    margin-right: 20px;
+    margin-left: 20%;
+  }
+  
+  .crumbs ol {
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    gap: 10%; 
+    align-items: center; 
+  }
+  
+  .crumbs ol li {
+    text-align: center;
+  }
+  
+  .crumbs a {
+    color: white; /* Définir la couleur du texte des liens */
+  }
+  
+  .container { 
+    padding-top: 250px;
+    text-align: center;
+    Display: flex;
+    height: auto;
+    width: 100%;
+  }
+  /* Modif ce container en container Header */
+  

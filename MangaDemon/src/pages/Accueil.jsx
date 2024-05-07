@@ -1,44 +1,38 @@
-import { useState } from 'react'
-import viteLogo from '/vite.svg'
-import '../App.css'
+
+import React, { useState, useEffect } from 'react';
+import Categorie from '../components/Categorie/Categorie';
+import donnees from './../../manga.json'
 
 function Accueil() {
-  
+
+  const [result, setResult] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    fetch('https://api.jikan.moe/v4/manga', {
+      method: 'GET',
+    })
+      .then(response => response.json())
+      .then(data => {
+        setResult(data.data);
+        setLoading(true);
+        console.log(data.data)
+      }
+      )
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
 
   return (
-    <>
     <main>
-    <div className="container" style={{
-      textAlign: 'center',
-      display: 'flex',
-    }}>
-      <div className="New" style={{
-        backgroundColor: 'blue',
-        width: '25%',
-        marginLeft : '5%',
-        marginRight : '5%',
-      }
-      }>
-        <h1>New</h1>
+      <div className="container">
+        <Categorie list={result.slice(0,5)} title="News" />
+        <Categorie list={result.slice(5,10)} title="Best" />
+        <Categorie list={result.slice(10,15)} title="Most liked" />
       </div>
-      <div className="Most liked" style={{
-        backgroundColor: 'blue',
-        width: '25%',
-        marginRight : '5%',
-      }}>
-        <h1>Most liked</h1>
-      </div>
-      <div className="Most viewed" style={{
-        backgroundColor: 'blue',
-        width: '25%',
-        marginRight : '5%',
-      }}>
-        <h1>Most viewed</h1>
-      </div>
-    </div>
     </main>
-    </>
-  )
+  );
 }
 
-export default Accueil
+export default Accueil;

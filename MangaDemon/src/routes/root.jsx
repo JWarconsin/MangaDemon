@@ -6,7 +6,7 @@ import Historical from "../pages/Historical";
 import Search from "../pages/Search";
 import Settings from "../pages/Settings";
 import Suggestions from "../pages/Suggestions";
-
+import Detail from "../pages/Detail";
 import ErrorPage from "../pages/404";
 import App from "../App";
 
@@ -39,6 +39,10 @@ const router = createBrowserRouter([
         {
             path: "/Search",
             element: <Search />
+        },
+        {
+          path: "/Detail/:idManga",
+          element: <Detail />
         }
       ]
     }

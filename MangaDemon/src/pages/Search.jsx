@@ -1,64 +1,48 @@
-import { useState } from 'react'
-import viteLogo from '/vite.svg'
 import '../App.css'
+import React, { useState, useEffect } from 'react';
+import Categorie from '../components/Categorie/Categorie';
+import donnees from './../../manga.json'
+
+
 
 function Search() {
+  const [result, setResult] = useState([]);
+  const [infoManga, setinfoManga] = useState([]);
+  const [loading, setLoading] = useState(false);
   
+  const handleSearch = async () => {
+    try {
+      const response = await fetch(`https://api.jikan.moe/v4/manga?sfw=true&q=${infoManga}`);
+      const data = await response.json();
+      setResult(data.data);
+    } catch (error) {
+      console.error('Erreur lors de la recherche :',error)
+    }
+  };
 
   return (
     <>
-  <header>
-  <ul style={{
-    display: 'flex',
-    justifyContent: 'space-between',
-    listStyle: 'none',
-    padding: 0,
-    margin: 0,
-    width: '100%',
-    backgroundColor: 'orange',
-  }}>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src={viteLogo} className="logo" alt="LogoManga" />
-    </a>
-    <button className='ButtonHeader' >For you</button>
-    <button className='ButtonHeader' >Suggestions</button>
-    <button className='ButtonHeader' >Search</button>
-    <button className='ButtonHeader' >Historical</button>
-    <button className='ButtonHeader' >Settings</button>
-  </ul>
-</header>
+    <main>
+     
+      <div className="container">
+        <nav id='navBar'>
+          <input className="SearchBar"
+           type="text"
+           id="titre"
+           placeholder='Title'
+           value={infoManga}
+           onChange={(e) => setinfoManga(e.target.value)}
+           />
+          <button onClick={handleSearch} className='SearchButton' >Rechercher</button>
+        </nav>
 
-
-    <body>
-    <div className="container" style={{
-      textAlign: 'center',
-      display: 'flex',
-    }}>
-      <div className="New" style={{
-        backgroundColor: 'blue',
-        width: '25%',
-        marginLeft : '5%',
-        marginRight : '5%',
-      }
-      }>
-        <h1>New</h1>
+        <div className="containerAll">
+          <Categorie list={result.slice(0,2)} title="" />
+          <Categorie list={result.slice(2,4)} title="" />
+          <Categorie list={result.slice(4,6)} title="" />
+        </div>
       </div>
-      <div className="Most liked" style={{
-        backgroundColor: 'blue',
-        width: '25%',
-        marginRight : '5%',
-      }}>
-        <h1>Most liked</h1>
-      </div>
-      <div className="Most viewed" style={{
-        backgroundColor: 'blue',
-        width: '25%',
-        marginRight : '5%',
-      }}>
-        <h1>Most viewed</h1>
-      </div>
-    </div>
-    </body>
+    </main>
     </>
   )
 }

@@ -1,6 +1,6 @@
 /* fichier App.jsx */
 import { Outlet } from 'react-router-dom';
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation/Navigation";
 import "./index.css";
 
 export default function App() {
@@ -13,4 +13,4 @@ export default function App() {
     </div>
   );
 }
-            
+        

@@ -1,17 +1,17 @@
 /* fichier Navigation.jsx */
 import { Link } from 'react-router-dom';
-import viteLogo from '/vite.svg'
+import MangaLogo from '../../assets/logo.png'
+import './Navigation.css'
 
 export default function Navigation() {
   return (
-    <header>
+    <header className='Header'>
       <nav className="crumbs">
         <ol>
           <li>
             <Link to={`/`}>
-            <a href="https://vitejs.dev" target="_blank">
-             <img src={viteLogo} className="logo" alt="LogoManga" />
-             </a></Link>
+             <img src={MangaLogo} className="logo" alt="LogoManga" />
+             </Link>
           </li>
           <li>
             <Link to={`ForYou`}>For You</Link>

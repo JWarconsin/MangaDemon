@@ -7,26 +7,6 @@ function ForYou() {
 
   return (
     <>
-  <header>
-  <ul style={{
-    display: 'flex',
-    justifyContent: 'space-between',
-    listStyle: 'none',
-    padding: 0,
-    margin: 0,
-    width: '100%',
-    backgroundColor: 'orange',
-  }}>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src={viteLogo} className="logo" alt="LogoManga" />
-    </a>
-    <button className='ButtonHeader' >For you</button>
-    <button className='ButtonHeader' >Suggestions</button>
-    <button className='ButtonHeader' >Search</button>
-    <button className='ButtonHeader' >Historical</button>
-    <button className='ButtonHeader' >Settings</button>
-  </ul>
-</header>
 
 
     <body>
